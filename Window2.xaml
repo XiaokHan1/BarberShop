@@ -5,22 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BarberShopSalon"
         mc:Ignorable="d"
-        Title="Список" Height="700" Width="700">
+        Title="Список" Height="600" WindowStartupLocation="CenterOwner" Width="700">
     <Grid Background="#55c5ff">
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="36" />
+            <RowDefinition Height="60" />
             <RowDefinition Height="103" />
             <RowDefinition Height="531" />
         </Grid.RowDefinitions>
 
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="653" Margin="39,0,0,0" Grid.Row="1">
-            <Button x:Name="ListMenu" Width="128" Background="White" Click="ListMenu_Click"
-Margin="0,22,100,21" Height="60" Content="Услуги" Foreground="Black" BorderBrush="Black" BorderThickness="2" FontSize="20"/>
-            <Button x:Name="ListClient" Content="Очередь" Width="100" Background="White" Click="ListClient_Click"
-Margin="0,22,100,21" Height="60" Foreground="Black" BorderBrush="Black" BorderThickness="2" FontSize="20"/>
-            <Button x:Name="ListCustomers" Height="60" Content="Сотрудники" Width="123" Background="White" Click="ListCustomers_Click"
-Foreground="Black" BorderBrush="Black" BorderThickness="2" FontSize="20" Margin="0,22,0,21"/>
+        <Button BorderThickness="2" x:Name="AndBtn" Click="AndBtn_Click" Content="Выход" HorizontalAlignment="Right" Style="{StaticResource AcceptButton}"/>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1">
+            <Button x:Name="ListMenu" Width="128" Click="ListMenu_Click" Margin="0 0 40 0" Style="{StaticResource AcceptButton}"
+                    Height="60" Content="Услуги" Foreground="Black" BorderThickness="2" FontSize="20"/>
+            <Button x:Name="ListClient" Content="Очередь" Width="150" Margin="0 0 40 0" Click="ListClient_Click"
+                    Style="{StaticResource AcceptButton}" Height="60" Foreground="Black" BorderThickness="2" FontSize="20"/>
+            <Button x:Name="ListCustomers" Height="60" Content="Сотрудники" Width="181" Click="ListCustomers_Click"
+                    Style="{StaticResource AcceptButton}" Foreground="Black" BorderThickness="2" FontSize="20" Margin="0,22,0,21" />
         </StackPanel>
 
         <Frame Grid.Row="2" x:Name="frame" Foreground="#FFFFF4F4" Grid.ColumnSpan="3"/>

@@ -32,7 +32,7 @@ namespace BarberShopSalon
 
         private void StartTypingBtn_Copy1_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void StartTypingBtn_Copy_Click(object sender, RoutedEventArgs e)

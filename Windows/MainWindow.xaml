@@ -5,43 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BarberShopSalon.Windows"
         mc:Ignorable="d"
-        Title="Авторизация" Height="800" Width="800" WindowStartupLocation="CenterOwner">
+        Title="Авторизация" Height="450" Width="800" WindowStartupLocation="CenterOwner">
     <Grid Background="#55c5ff">
-      
+
         <Grid.RowDefinitions>
             <RowDefinition Height="60" />
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="80" />
+            <RowDefinition Height="160" />
             <RowDefinition Height="80" />
         </Grid.RowDefinitions>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="31*" />
-            <ColumnDefinition Width="22*"/>
-            <ColumnDefinition Width="47*"/>
-            <ColumnDefinition Width="298*"/>
-            <ColumnDefinition Width="395*" />
-        </Grid.ColumnDefinitions>
+        <Button x:Name="And1Btn" Content="Назад" Click="And1Btn_Click" Style="{StaticResource AcceptButton}" HorizontalAlignment="Right"/>
 
-        
-
-        <StackPanel Grid.ColumnSpan="2" Margin="1.5,5,100,0"
-                    Orientation="Vertical" Grid.Row="1" Grid.Column="3">
-            <StackPanel.Background>
-                <ImageBrush/>
-            </StackPanel.Background>
-
-            <TextBlock Text="Введите имя"
-                       FontSize="24" Foreground="White"/>
-            <TextBox FontSize="20" x:Name="NameTb" BorderThickness="1"/>
-
-            <TextBlock Text="Введите пароль" FontSize="24" Foreground="White"/>
-            <PasswordBox FontSize="20" x:Name="PassTb"/>
-
-            <Button x:Name="AutorizationApp" Margin="0 40 0 0"
-                    Content="Войти"  Height="50" FontSize="25"
-                    Width="200" Click="AutorizationApp_Click" Background="White" BorderBrush="Black"/>
-
+        <StackPanel Orientation="Vertical" Grid.Row="1" VerticalAlignment="Center">
+            <TextBlock Text="Введите имя" HorizontalAlignment="Center" Width="280" FontSize="24" Foreground="White"/>
+            <TextBox FontSize="20" HorizontalAlignment="Center" Width="280" x:Name="NameTb" BorderThickness="1"/>
+            <TextBlock Text="Введите пароль" FontSize="24" HorizontalAlignment="Center" Width="280"  Foreground="White"/>
+            <PasswordBox FontSize="20" HorizontalAlignment="Center" Width="280"  x:Name="PassTb"/>
         </StackPanel>
+        <Button x:Name="AutorizationApp" Grid.Row="2" HorizontalAlignment="Center"
+                    Content="Войти"  Height="60" FontSize="25" Style="{StaticResource AcceptButton}"
+                    Width="200" Click="AutorizationApp_Click" />
     </Grid>
 </Window>

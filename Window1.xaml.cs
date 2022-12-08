@@ -26,7 +26,7 @@ namespace BarberShopSalon
 
             user.Add(new User("Каримов А.О.", "27.04.1996", "23", "M"));
             user.Add(new User("Шишкин К.А.", "25.02.1998", "21", "M"));
-            user.Add(new User("Кучукбаева Л.А.", "18.02.1999", "20", "F"));
+            user.Add(new User("Кучукбаева Л.А.", "18.02.1999", "20", "W"));
             user.Add(new User("Белов А.В.", "25.02.1997", "22", "M"));
             user.Add(new User("Хоробрых Г.Д.", "25.02.1996", "23", "M"));
             user.Add(new User("Юкович Н.Т.", "25.02.1995", "22", "M"));
@@ -60,11 +60,30 @@ namespace BarberShopSalon
             if (genderFilter.SelectedIndex == 0)
                 newUsers = user.FindAll(x => x.gender == "M");
             else
-                newUsers = user.FindAll(x => x.gender == "F");
+                newUsers = user.FindAll(x => x.gender == "W");
 
             LoadUser(newUsers);
 
             newUsers = newUsers.FindAll(x => x.name.Contains(nameFilter.Text));
+        }
+
+        private void AndBtn2_Click(object sender, RoutedEventArgs e)
+        {
+            Windows.MainWindow mainWindow = new Windows.MainWindow();
+            mainWindow.Show();
+            Close();
+        }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Dobavlenie_Click(object sender, RoutedEventArgs e)
+        {
+            Windows.StartWindow startWindow = new Windows.StartWindow();
+            startWindow.Show();
+            Close();
         }
     }
 }

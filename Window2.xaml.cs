@@ -32,12 +32,19 @@ namespace BarberShopSalon
 
         private void ListCustomers_Click(object sender, RoutedEventArgs e)
         {
-            frame.Navigate(new RecordPage());
+            frame.Navigate(new SOTRUDNIKI());
         }
 
         private void ListMenu_Click(object sender, RoutedEventArgs e)
         {
             frame.Navigate(new ListPage());
+        }
+
+        private void AndBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Window1 window1 = new Window1();
+            window1.Show();
+            Close();
         }
     }
 }

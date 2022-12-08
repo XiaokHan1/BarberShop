@@ -38,5 +38,12 @@ namespace BarberShopSalon.Windows
                 MessageBox.Show("Проверьте Логин и пароль.");
             }
         }
+
+        private void And1Btn_Click(object sender, RoutedEventArgs e)
+        {
+            Window3 window3 = new Window3();
+            window3.Show();
+            Close();
+        }
     }
 }

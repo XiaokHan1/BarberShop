@@ -9,7 +9,7 @@
       Title="Ochered">
 
     <Grid>
-        <StackPanel Orientation="Vertical" Background="#55c5ff">
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Background="#55c5ff">
             <TextBlock Text="В очеререди" FontSize="25" HorizontalAlignment="Center"
 Foreground="White" Margin="0 0 0 20"/>
             <TextBlock Text="1 Александр" FontSize="20"

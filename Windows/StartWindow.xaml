@@ -5,8 +5,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BarberShopSalon.Windows"
         mc:Ignorable="d"
-        Title="StartWindow" Height="800" Width="800" WindowStartupLocation="CenterOwner">
-    <Grid>
-        
+        Title="StartWindow" Height="700" Width="700" WindowStartupLocation="CenterOwner">
+    <Grid Background="#55c5ff">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+
+            <TextBlock FontSize="25" Text="Введите имя клиента" Foreground="White" Height="168" VerticalAlignment="Bottom" FontFamily="Times New Roman" FontStyle="Italic" FontWeight="Bold"/>
+            <TextBlock Grid.Row="1" FontFamily="Times New Roman" FontStyle="Italic" FontWeight="Bold" FontSize="25" Text="Введите дату рождения" Foreground="White"/>
+            <TextBlock Grid.Row="2" FontFamily="Times New Roman" FontStyle="Italic" FontWeight="Bold" FontSize="25" Text="Введите возраст" Foreground="White"/>
+            <TextBlock Grid.Row="3" FontFamily="Times New Roman" FontStyle="Italic" FontWeight="Bold" FontSize="25" Text="Введите пол" Foreground="White"/>
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            
+             <TextBox x:Name="NameTb" Margin="20 0 30 120" FontSize="25" />
+             <TextBox x:Name="DateTb" Margin="20 0 30 120" Grid.Row="1" FontSize="25" />
+             <TextBox x:Name="AgeTb" Margin="20 0 30 120" Grid.Row="2" FontSize="25" />
+             <TextBox x:Name="gengerTb" Margin="20 0 30 120" Grid.Row="3" FontSize="25" />
+        </Grid>
     </Grid>
 </Window>
