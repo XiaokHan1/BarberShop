@@ -37,11 +37,11 @@ namespace BarberShopSalon
 
         public void LoadUser(List<User> _user)
         {
-            userList.Items.Clear(); // очищаем лист с элементами
+            userList.Items.Clear(); 
 
-            for (int i = 0; i < _user.Count; i++) // перебираем элементы
+            for (int i = 0; i < _user.Count; i++) 
             {
-                userList.Items.Add(_user[i]); // добавляем элементы в ListBox
+                userList.Items.Add(_user[i]);
             }
         }
 

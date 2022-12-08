@@ -15,10 +15,10 @@ namespace BarberShopSalon
 
         public User(string _name, string _dataOfBirth, string _age, string _gender)
         {
-            this.name = _name;
-            this.dataOfBirth = _dataOfBirth;
-            this.age = _age;
-            this.gender = _gender;
+            name = _name;
+            dataOfBirth = _dataOfBirth;
+            age = _age;
+            gender = _gender;
         }
     }
 }

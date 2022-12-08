@@ -28,7 +28,7 @@
                 </Style>
             </Image.Style>
         </Image>
-        <StackPanel Grid.Column="2" Margin="0 30">
+        <StackPanel Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock Text="Добро пожаловать "
                        FontSize="52"
                        Foreground="White"/>

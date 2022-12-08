@@ -23,5 +23,37 @@ namespace BarberShopSalon.Windows
         {
             InitializeComponent();
         }
+
+        private void DobBtn_Click(object sender, RoutedEventArgs e)
+        {
+            string mes = "";
+            if (string.IsNullOrWhiteSpace(NameTb.Text))
+                mes += "Введите имя\n";
+            if (string.IsNullOrWhiteSpace(NameTb.Text))
+                mes += "Введите дату рождения\n";
+            if (string.IsNullOrWhiteSpace(NameTb.Text))
+                mes += "Введите возраст\n";
+            if (string.IsNullOrWhiteSpace(NameTb.Text))
+                mes += "Введите пол\n";
+
+            if(mes != "")
+            {
+                MessageBox.Show(mes);
+                mes = "";
+                return;
+            }
+             User user = new User()
+            {
+                name = NameTb.Text,
+                dataOfBirth = DateTb.Text,
+                age = AgeTb.Text,
+                gender = gengerTb.Text
+            };
+            
+            NameTb.Text = "";
+            DateTb.Text = "";
+            AgeTb.Text = "";
+            gengerTb.Text = "";
+        }
     }
 }

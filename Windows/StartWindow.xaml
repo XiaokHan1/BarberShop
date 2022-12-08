@@ -17,9 +17,10 @@
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
 
-            <TextBlock FontSize="25" Text="Введите имя клиента" Foreground="White" Height="168" VerticalAlignment="Bottom" FontFamily="Times New Roman" FontStyle="Italic" FontWeight="Bold"/>
+            <TextBlock FontSize="25" Text="Введите имя клиента" Foreground="White" Height="135" VerticalAlignment="Bottom" FontFamily="Times New Roman" FontStyle="Italic" FontWeight="Bold"/>
             <TextBlock Grid.Row="1" FontFamily="Times New Roman" FontStyle="Italic" FontWeight="Bold" FontSize="25" Text="Введите дату рождения" Foreground="White"/>
             <TextBlock Grid.Row="2" FontFamily="Times New Roman" FontStyle="Italic" FontWeight="Bold" FontSize="25" Text="Введите возраст" Foreground="White"/>
             <TextBlock Grid.Row="3" FontFamily="Times New Roman" FontStyle="Italic" FontWeight="Bold" FontSize="25" Text="Введите пол" Foreground="White"/>
@@ -31,12 +32,17 @@
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
             
-             <TextBox x:Name="NameTb" Margin="20 0 30 120" FontSize="25" />
-             <TextBox x:Name="DateTb" Margin="20 0 30 120" Grid.Row="1" FontSize="25" />
-             <TextBox x:Name="AgeTb" Margin="20 0 30 120" Grid.Row="2" FontSize="25" />
-             <TextBox x:Name="gengerTb" Margin="20 0 30 120" Grid.Row="3" FontSize="25" />
+             <TextBox x:Name="NameTb" Margin="20 0 30 100" FontSize="25" />
+             <TextBox x:Name="DateTb" Margin="20 0 30 100" Grid.Row="1" FontSize="25" />
+             <TextBox x:Name="AgeTb" Margin="20 0 30 100" Grid.Row="2" FontSize="25" />
+             <TextBox x:Name="gengerTb" Margin="20 0 30 100" Grid.Row="3" FontSize="25" />
+
+            <Button Grid.Row="4" x:Name="DobBtn" Content="Добавить" FontFamily="Times New Roman" 
+                    FontStyle="Italic" FontWeight="Bold" FontSize="25" Style="{StaticResource AcceptButton}" 
+                    Height="80" HorizontalAlignment="Center" Click="DobBtn_Click"/>
         </Grid>
     </Grid>
 </Window>

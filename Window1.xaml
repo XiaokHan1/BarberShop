@@ -15,7 +15,7 @@
             <ColumnDefinition Width="71*"/>
         </Grid.ColumnDefinitions>
         <Grid.Background>
-            <ImageBrush ImageSource="Фон 1.jpg"/>
+            <ImageBrush ImageSource="/Pages/Фон 1.jpg"/>
         </Grid.Background>
         <Label Content="Фильтровать:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Background="White"/>
         <Button x:Name="Lists" Style="{StaticResource AcceptButton}" Height="40" FontSize="10" Content="Списки" HorizontalAlignment="Right" VerticalAlignment="Top" Click="Lists_Click" Grid.Column="1" Width="110" Margin="0 0 10 0"/>

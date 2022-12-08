@@ -168,11 +168,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Windows\da5b4b5fd7eb8bf9139130a52b6ae879.jpeg" />
-    <Resource Include="Фон 3.jpg" />
-    <Resource Include="Windows\Фон 2.jpg" />
-    <Resource Include="Фон 2.jpg" />
-    <Resource Include="Windows\1.jpg" />
-    <Resource Include="1.jpg" />
     <Resource Include="Image1.png" />
     <Content Include="Model\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -185,9 +180,6 @@
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
     <Resource Include="Pages\1.jpg" />
-    <Resource Include="Фон 1.jpg" />
-    <Resource Include="Pages\Фон 3.jpg" />
-    <Resource Include="Pages\Фон 2.jpg" />
     <Resource Include="Pages\Фон 1.jpg" />
   </ItemGroup>
   <ItemGroup>
