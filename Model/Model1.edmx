@@ -102,18 +102,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Record_ManPost">
-          <End Role="ManPost" Type="Self.ManPost" Multiplicity="1" />
-          <End Role="Record" Type="Self.Record" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ManPost">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Record">
-              <PropertyRef Name="Clientid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Record_Service">
           <End Role="Service" Type="Self.Service" Multiplicity="1" />
           <End Role="Record" Type="Self.Record" Multiplicity="*" />
@@ -155,10 +143,6 @@
             <End Role="Barber" EntitySet="Barber" />
             <End Role="Record" EntitySet="Record" />
           </AssociationSet>
-          <AssociationSet Name="FK_Record_ManPost" Association="Self.FK_Record_ManPost">
-            <End Role="ManPost" EntitySet="ManPost" />
-            <End Role="Record" EntitySet="Record" />
-          </AssociationSet>
           <AssociationSet Name="FK_Record_Service" Association="Self.FK_Record_Service">
             <End Role="Service" EntitySet="Service" />
             <End Role="Record" EntitySet="Record" />
@@ -188,10 +172,6 @@
           <AssociationSet Name="FK_ManPost_POl" Association="Beloborodov_BarbershopModel.FK_ManPost_POl">
             <End Role="POl" EntitySet="POl" />
             <End Role="ManPost" EntitySet="ManPost" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Record_ManPost" Association="Beloborodov_BarbershopModel.FK_Record_ManPost">
-            <End Role="ManPost" EntitySet="ManPost" />
-            <End Role="Record" EntitySet="Record" />
           </AssociationSet>
           <AssociationSet Name="FK_Record_Service" Association="Beloborodov_BarbershopModel.FK_Record_Service">
             <End Role="Service" EntitySet="Service" />
@@ -223,7 +203,6 @@
           <Property Name="Genger" Type="Int32" Nullable="false" />
           <Property Name="Pol" Type="Int32" Nullable="false" />
           <NavigationProperty Name="POl1" Relationship="Beloborodov_BarbershopModel.FK_ManPost_POl" FromRole="ManPost" ToRole="POl" />
-          <NavigationProperty Name="Record" Relationship="Beloborodov_BarbershopModel.FK_Record_ManPost" FromRole="ManPost" ToRole="Record" />
         </EntityType>
         <EntityType Name="Ochered">
           <Key>
@@ -251,7 +230,6 @@
           <Property Name="DateandTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Comment" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Barber" Relationship="Beloborodov_BarbershopModel.FK_Record_Barber" FromRole="Record" ToRole="Barber" />
-          <NavigationProperty Name="ManPost" Relationship="Beloborodov_BarbershopModel.FK_Record_ManPost" FromRole="Record" ToRole="ManPost" />
           <NavigationProperty Name="Service" Relationship="Beloborodov_BarbershopModel.FK_Record_Service" FromRole="Record" ToRole="Service" />
           <NavigationProperty Name="Users" Relationship="Beloborodov_BarbershopModel.FK_Record_Users" FromRole="Record" ToRole="Users" />
         </EntityType>
@@ -306,18 +284,6 @@
             </Principal>
             <Dependent Role="ManPost">
               <PropertyRef Name="Pol" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Record_ManPost">
-          <End Type="Beloborodov_BarbershopModel.ManPost" Role="ManPost" Multiplicity="1" />
-          <End Type="Beloborodov_BarbershopModel.Record" Role="Record" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ManPost">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Record">
-              <PropertyRef Name="Clientid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>

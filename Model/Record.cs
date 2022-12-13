@@ -22,7 +22,6 @@ namespace BarberShopSalon.Model
         public string Comment { get; set; }
     
         public virtual Barber Barber { get; set; }
-        public virtual ManPost ManPost { get; set; }
         public virtual Service Service { get; set; }
         public virtual Users Users { get; set; }
     }

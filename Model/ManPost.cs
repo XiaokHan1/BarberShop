@@ -14,12 +14,6 @@ namespace BarberShopSalon.Model
     
     public partial class ManPost
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ManPost()
-        {
-            this.Record = new HashSet<Record>();
-        }
-    
         public int Id { get; set; }
         public string Name { get; set; }
         public System.DateTime Data { get; set; }
@@ -27,7 +21,5 @@ namespace BarberShopSalon.Model
         public int Pol { get; set; }
     
         public virtual POl POl1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Record> Record { get; set; }
     }
 }

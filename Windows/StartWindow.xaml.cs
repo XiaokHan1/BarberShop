@@ -50,7 +50,7 @@ namespace BarberShopSalon.Windows
                 Name = NameTb.Text,
                 Data = (DateTime)DateTb.SelectedDate,
                 Genger = int.Parse(AgeTb.Text),
-                POl1 = gengerTb.ItemsSource as Model.POl
+                POl1 = gengerTb.SelectedItem as Model.POl
             };
             AppData.BS.beloborodov.ManPost.Add(manPost);
             AppData.BS.beloborodov.SaveChanges();
@@ -61,8 +61,6 @@ namespace BarberShopSalon.Windows
             AgeTb.Text = "";
             gengerTb.Text = "";
         }
-
-       
 
         private void DelBtn_Copy_Click(object sender, RoutedEventArgs e)
         {

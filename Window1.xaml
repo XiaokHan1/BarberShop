@@ -10,10 +10,6 @@
         <ImageBrush/>
     </Window.Background>
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="17*"/>
-            <ColumnDefinition Width="71*"/>
-        </Grid.ColumnDefinitions>
         <Grid.Background>
             <ImageBrush ImageSource="/Pages/Фон 1.jpg"/>
         </Grid.Background>
@@ -33,7 +29,7 @@
             <TextBlock>Мужской</TextBlock>
             <TextBlock>Женский</TextBlock>
         </ComboBox>
-        <Label Content="Поиск:" HorizontalAlignment="Left" Height="32" Margin="75,45,0,0" VerticalAlignment="Top" Background="#FFFFEFEF" Grid.Column="1"/>
+        <Label Content="Поиск:" HorizontalAlignment="Left" Height="32" Margin="75 45 0 10" VerticalAlignment="Top" Background="#FFFFEFEF" Grid.Column="1" RenderTransformOrigin="1.202,0.469"/>
         <TextBox x:Name="nameFilter" Height="32" Margin="127,45,165,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Grid.Column="1"/>
         <Button Click="Button_Click" Style="{StaticResource AcceptButton}" Height="42" FontSize="10" Content="Применить" HorizontalAlignment="Right" Margin="0,40,10,0" VerticalAlignment="Top" Width="150" Grid.Column="1"/>
         <ListView x:Name="userList" Margin="10,80,10,10" Background="#FF00C5FF" Grid.ColumnSpan="2" Foreground="White">
