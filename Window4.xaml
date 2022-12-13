@@ -1,0 +1,49 @@
+﻿<Window x:Class="BarberShopSalon.Window4"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BarberShopSalon"
+        mc:Ignorable="d"
+        Title="Window4" Height="700" Width="600">
+    <Grid Background="#55c5ff">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="134*" />
+                <RowDefinition Height="134*" />
+                <RowDefinition Height="134*" />
+                <RowDefinition Height="133*" />
+                <RowDefinition Height="41*" />
+                <RowDefinition Height="22*"/>
+                <RowDefinition Height="71*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock FontSize="25" Foreground="White" Height="135" VerticalAlignment="Bottom" FontFamily="Times New Roman" FontStyle="Italic" FontWeight="Bold" Margin="0,-1,0,0"><Run/><LineBreak/><Run Text="Введите имя"/></TextBlock>
+            <TextBlock Grid.Row="1" FontFamily="Times New Roman" FontStyle="Italic" FontWeight="Bold" FontSize="25" Foreground="White"><Run/><LineBreak/><Run/><LineBreak/><Run Text="Введите "/><Run Text="логин"/></TextBlock>
+            <TextBlock Grid.Row="2" FontFamily="Times New Roman" FontStyle="Italic" FontWeight="Bold" FontSize="25" Foreground="White"><Run/><LineBreak/><Run/><LineBreak/><Run Text="Введите "/><Run Text="пароль"/></TextBlock>
+            <TextBlock Grid.Row="3" FontFamily="Times New Roman" FontStyle="Italic" FontWeight="Bold" FontSize="25" Foreground="White"><Run/><LineBreak/><Run/><LineBreak/><Run Text="Подтвердите пароль"/></TextBlock>
+            <Button Grid.Row="4" x:Name="Back" Content="Зарегестироваться" FontFamily="Times New Roman" 
+                FontStyle="Italic" FontWeight="Bold" FontSize="20" Style="{StaticResource ResourceKey=AcceptButton}" 
+                Height="84" HorizontalAlignment="Center"  Click="Back_Click" VerticalAlignment="Center" Width="252" Grid.RowSpan="3"/>
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+
+            <TextBox x:Name="NameTb" Margin="20,30,30,70" FontSize="25" />
+            <TextBox x:Name="DateTb" Margin="20,47,30,53" Grid.Row="1" FontSize="25" />
+            <TextBox x:Name="AgeTb" Margin="20,51,30,49" Grid.Row="2" FontSize="25" />
+            <TextBox x:Name="gengerTb" Margin="20,54.2,30,45.8" Grid.Row="3" FontSize="25" />
+        </Grid>
+    </Grid>
+</Window>

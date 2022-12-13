@@ -22,6 +22,9 @@ namespace BarberShopSalon.Windows
         public StartWindow()
         {
             InitializeComponent();
+            gengerTb.SelectedValuePath = "Id";
+            gengerTb.DisplayMemberPath = "Name";
+            gengerTb.ItemsSource = AppData.BS.beloborodov.POl.ToList();
         }
 
         private void DobBtn_Click(object sender, RoutedEventArgs e)
@@ -29,11 +32,11 @@ namespace BarberShopSalon.Windows
             string mes = "";
             if (string.IsNullOrWhiteSpace(NameTb.Text))
                 mes += "Введите имя\n";
-            if (string.IsNullOrWhiteSpace(NameTb.Text))
+            if (string.IsNullOrWhiteSpace(DateTb.Text))
                 mes += "Введите дату рождения\n";
-            if (string.IsNullOrWhiteSpace(NameTb.Text))
+            if (string.IsNullOrWhiteSpace(AgeTb.Text))
                 mes += "Введите возраст\n";
-            if (string.IsNullOrWhiteSpace(NameTb.Text))
+            if (string.IsNullOrWhiteSpace(gengerTb.Text))
                 mes += "Введите пол\n";
 
             if(mes != "")
@@ -42,18 +45,35 @@ namespace BarberShopSalon.Windows
                 mes = "";
                 return;
             }
-             User user = new User()
+            Model.ManPost manPost = new Model.ManPost()
             {
-                name = NameTb.Text,
-                dataOfBirth = DateTb.Text,
-                age = AgeTb.Text,
-                gender = gengerTb.Text
+                Name = NameTb.Text,
+                Data = (DateTime)DateTb.SelectedDate,
+                Genger = int.Parse(AgeTb.Text),
+                POl1 = gengerTb.ItemsSource as Model.POl
             };
-            
+            AppData.BS.beloborodov.ManPost.Add(manPost);
+            AppData.BS.beloborodov.SaveChanges();
+            MessageBox.Show("Добавлено");
+
             NameTb.Text = "";
             DateTb.Text = "";
             AgeTb.Text = "";
             gengerTb.Text = "";
+        }
+
+       
+
+        private void DelBtn_Copy_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            Window1 window1 = new Window1();
+            window1.Show();
+            Close();
         }
     }
 }

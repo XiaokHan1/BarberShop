@@ -8,6 +8,6 @@ namespace BarberShopSalon.AppData
 {
     public class BS
     {
-        public static Model.Beloborodov_BarbershopEntities barbershopEntities = new Model.Beloborodov_BarbershopEntities();
+        public static Model.Beloborodov_BarbershopEntities1 beloborodov = new Model.Beloborodov_BarbershopEntities1();
     }
 }

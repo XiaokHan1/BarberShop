@@ -26,7 +26,7 @@ namespace BarberShopSalon.Windows
 
         private void AutorizationApp_Click(object sender, RoutedEventArgs e)
         {
-            var enter = AppData.BS.barbershopEntities.Users.Where(i => i.Login == NameTb.Text && i.Password == PassTb.Password).FirstOrDefault();
+            var enter = AppData.BS.beloborodov.Users.Where(i => i.Login == NameTb.Text && i.Password == PassTb.Password).FirstOrDefault();
             if (enter != null)
             {
                 Window1 window2 = new Window1();

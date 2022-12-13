@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BarberShopSalon"
         mc:Ignorable="d"
-        Title="Window3" Height="805.5" WindowStartupLocation="CenterOwner" Width="1244">
+        Title="Главная страница" Height="805.5" WindowStartupLocation="CenterOwner" Width="1244">
     <Grid Background="#55c5ff">
 
         <Grid.RowDefinitions>
@@ -14,11 +14,12 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width=".05*"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="44*"/>
+            <ColumnDefinition Width="559*"/>
+            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="603*"/>
         </Grid.ColumnDefinitions>
-        <Image Width="450" VerticalAlignment=" Bottom">
+        <Image Width="450" VerticalAlignment=" Bottom" Grid.Column="1" Margin="32,0,77,258" Grid.Row="1">
             <Image.Style >
                 <Style TargetType="Image" >
                     <Style.Triggers >
@@ -28,7 +29,7 @@
                 </Style>
             </Image.Style>
         </Image>
-        <StackPanel Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="66,92,66,93">
             <TextBlock Text="Добро пожаловать "
                        FontSize="52"
                        Foreground="White"/>
@@ -40,20 +41,20 @@
                     Style="{StaticResource AcceptButton}" Click="StartTypingBtn_Copy1_Click" Height="90" Width="460"/>
         </StackPanel>
 
-        <Border Grid.Row=" 1" Background=" White" CornerRadius="10" Grid.ColumnSpan="3 "/>
+        <Border Grid.Row=" 1" Background=" White" CornerRadius="10" Grid.ColumnSpan="4"/>
 
-        <StackPanel Grid.Row=" 1" Margin=" 30 40">
+        <StackPanel Grid.Row=" 1" Margin=" 30 40" Grid.ColumnSpan="2">
             <TextBlock Text="Цены" FontSize="30" Foreground=" #28a4e8"/>
             <TextBlock Text="Наши цены привлекут ваше внимание)" FontSize="20" TextWrapping="Wrap" Foreground=" #5c5c5c"/>
             <TextBlock FontSize=" 20" Foreground=" #28a4e8"/>
         </StackPanel>
-        <Border Grid.Row=" 1" Grid.Column=" 1" BorderThickness=" 0.5"
-                BorderBrush="#e8e8e8" HorizontalAlignment="Center" Height=" 200"/>
-        <StackPanel Grid.Row=" 1" Grid.Column=" 2" Margin=" 30 40">
+        <Border Grid.Row=" 1" Grid.Column="2" BorderThickness=" 0.5"
+                BorderBrush="#e8e8e8" HorizontalAlignment="Center" Height=" 200" Margin="15,29"/>
+        <StackPanel Grid.Row=" 1" Grid.Column="3" Margin=" 30 40">
             <TextBlock Text="Сотрудники"
                        FontSize="30"
                        Foreground=" #28a4e8" />
-            <TextBlock Text="Работают только проффесионалы"
+            <TextBlock Text="Работают только проффесионалы, можете смело нам доверять вашу голову)"
                        FontSize=" 20"
                        TextWrapping="Wrap"
                        Foreground=" #5c5c5c"
@@ -63,7 +64,7 @@
             </TextBlock>
         </StackPanel>
 
-        <Image Height="570" VerticalAlignment="Top" Margin="0,10,10,0" Grid.ColumnSpan="2" Grid.RowSpan="2">
+        <Image Height="570" VerticalAlignment="Top" Margin="0,10,10,0" Grid.ColumnSpan="3" Grid.RowSpan="2">
             <Image.Style >
                 <Style TargetType="Image" >
                     <Style.Triggers >
@@ -73,6 +74,6 @@
                 </Style>
             </Image.Style>
         </Image>
-        <Image Source="Image1.png" Stretch="Fill" Grid.ColumnSpan="2"/>
+        <Image Source="Image1.png" Stretch="Fill" Grid.ColumnSpan="3"/>
     </Grid>
 </Window>

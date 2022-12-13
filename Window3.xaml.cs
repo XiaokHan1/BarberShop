@@ -37,7 +37,9 @@ namespace BarberShopSalon
 
         private void StartTypingBtn_Copy_Click(object sender, RoutedEventArgs e)
         {
-
+            Window4 window4 = new Window4();
+            window4.Show();
+            Close();
         }
 
         private void StartTypingBtn_Click_1(object sender, RoutedEventArgs e)

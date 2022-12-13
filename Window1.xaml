@@ -22,7 +22,7 @@
         <Button x:Name="Back" Style="{StaticResource AcceptButton}" Height="40" FontSize="10" Content="Удаление" HorizontalAlignment="Right" VerticalAlignment="Top" Click="Back_Click"  Grid.Column="1" Width="120" Margin="0,0,128,0"/>
         <Button x:Name="Dobavlenie" Content="Добавить" HorizontalAlignment="Right" VerticalAlignment="Top" Click="Dobavlenie_Click" Grid.Column="1" Margin="0,0,254,0" Style="{StaticResource AcceptButton}" Height="40" FontSize="10"/>
         <Button x:Name="AndBtn2" Content="Назад" HorizontalAlignment="Right" VerticalAlignment="Top" Click="AndBtn2_Click" Grid.Column="1" Margin="0,0,375,0" Style="{StaticResource AcceptButton}" Height="40" FontSize="10"/>
-        <Label Content="По полу:" Height="32" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" Background="White"/>
+        <Label Content="По полу:" Height="32" Margin="10,45,85,0" VerticalAlignment="Top" Background="White"/>
         <ComboBox x:Name="genderFilter" Height="32" HorizontalAlignment="Left" Margin="73,45,0,0" VerticalAlignment="Top" Width="150" Grid.ColumnSpan="2" BorderBrush="White">
             <ComboBox.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
@@ -36,15 +36,16 @@
         <Label Content="Поиск:" HorizontalAlignment="Left" Height="32" Margin="75,45,0,0" VerticalAlignment="Top" Background="#FFFFEFEF" Grid.Column="1"/>
         <TextBox x:Name="nameFilter" Height="32" Margin="127,45,165,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Grid.Column="1"/>
         <Button Click="Button_Click" Style="{StaticResource AcceptButton}" Height="42" FontSize="10" Content="Применить" HorizontalAlignment="Right" Margin="0,40,10,0" VerticalAlignment="Top" Width="150" Grid.Column="1"/>
-        <ListView x:Name="userList" Margin="10,80,10,10" Background="#FF00C5FF" Grid.ColumnSpan="2">
+        <ListView x:Name="userList" Margin="10,80,10,10" Background="#FF00C5FF" Grid.ColumnSpan="2" Foreground="White">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Клиент" Width="150" DisplayMemberBinding="{Binding name}"/>
-                    <GridViewColumn Header="Дата рождения" Width="120" DisplayMemberBinding="{Binding dataOfBirth}"/>
-                    <GridViewColumn Header="Возраст" Width="100" DisplayMemberBinding="{Binding age}"/>
-                    <GridViewColumn Header="Пол" Width="100" DisplayMemberBinding="{Binding gender}"/>
+                    <GridViewColumn Header="Клиент" Width="150" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Возраст" Width="120" DisplayMemberBinding="{Binding Data}"/>
+                    <GridViewColumn Header="Возраст" Width="100" DisplayMemberBinding="{Binding Genger}"/>
+                    <GridViewColumn Header="Пол" Width="100" DisplayMemberBinding="{Binding Pol}"/>
                 </GridView>
             </ListView.View>
         </ListView>
+        <Button x:Name="AndBtn2_Copy" Content="Изменить" HorizontalAlignment="Right" VerticalAlignment="Top" Click="AndBtn2_Copy_Click" Grid.Column="1" Margin="0,0,477,0" Style="{StaticResource AcceptButton}" Height="40" FontSize="10"/>
     </Grid>
 </Window>

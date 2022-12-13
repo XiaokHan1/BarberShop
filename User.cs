@@ -20,5 +20,10 @@ namespace BarberShopSalon
             age = _age;
             gender = _gender;
         }
+
+        public User()
+        {
+            
+        }
     }
 }

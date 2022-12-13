@@ -15,12 +15,29 @@
           <Property Name="information" Type="nvarchar" MaxLength="250" />
           <Property Name="Photo" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="ManPost">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Data" Type="date" Nullable="false" />
+          <Property Name="Genger" Type="int" Nullable="false" />
+          <Property Name="Pol" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Ochered">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="POl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Record">
           <Key>
@@ -42,6 +59,16 @@
           <Property Name="Price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Photo" Type="varbinary(max)" Nullable="false" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="Users">
           <Key>
             <PropertyRef Name="id" />
@@ -51,6 +78,18 @@
           <Property Name="Password" Type="nvarchar" MaxLength="50" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <Association Name="FK_ManPost_POl">
+          <End Role="POl" Type="Self.POl" Multiplicity="1" />
+          <End Role="ManPost" Type="Self.ManPost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POl">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ManPost">
+              <PropertyRef Name="Pol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Record_Barber">
           <End Role="Barber" Type="Self.Barber" Multiplicity="1" />
           <End Role="Record" Type="Self.Record" Multiplicity="*" />
@@ -60,6 +99,18 @@
             </Principal>
             <Dependent Role="Record">
               <PropertyRef Name="Serviceid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Record_ManPost">
+          <End Role="ManPost" Type="Self.ManPost" Multiplicity="1" />
+          <End Role="Record" Type="Self.Record" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ManPost">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Record">
+              <PropertyRef Name="Clientid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -75,18 +126,45 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Record_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Record" Type="Self.Record" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Record">
+              <PropertyRef Name="Barberid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Хранилище Beloborodov_BarbershopModelContainer">
           <EntitySet Name="Barber" EntityType="Self.Barber" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ManPost" EntityType="Self.ManPost" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ochered" EntityType="Self.Ochered" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POl" EntityType="Self.POl" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Record" EntityType="Self.Record" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ManPost_POl" Association="Self.FK_ManPost_POl">
+            <End Role="POl" EntitySet="POl" />
+            <End Role="ManPost" EntitySet="ManPost" />
+          </AssociationSet>
           <AssociationSet Name="FK_Record_Barber" Association="Self.FK_Record_Barber">
             <End Role="Barber" EntitySet="Barber" />
             <End Role="Record" EntitySet="Record" />
           </AssociationSet>
+          <AssociationSet Name="FK_Record_ManPost" Association="Self.FK_Record_ManPost">
+            <End Role="ManPost" EntitySet="ManPost" />
+            <End Role="Record" EntitySet="Record" />
+          </AssociationSet>
           <AssociationSet Name="FK_Record_Service" Association="Self.FK_Record_Service">
             <End Role="Service" EntitySet="Service" />
+            <End Role="Record" EntitySet="Record" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Record_Users" Association="Self.FK_Record_Users">
+            <End Role="Users" EntitySet="Users" />
             <End Role="Record" EntitySet="Record" />
           </AssociationSet>
         </EntityContainer>
@@ -94,16 +172,73 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Beloborodov_BarbershopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Beloborodov_BarbershopEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Barber" EntityType="Beloborodov_BarbershopModel.Barber" />
+          <EntitySet Name="ManPost" EntityType="Beloborodov_BarbershopModel.ManPost" />
+          <EntitySet Name="Ochered" EntityType="Beloborodov_BarbershopModel.Ochered" />
+          <EntitySet Name="POl" EntityType="Beloborodov_BarbershopModel.POl" />
+          <EntitySet Name="Record" EntityType="Beloborodov_BarbershopModel.Record" />
+          <EntitySet Name="Service" EntityType="Beloborodov_BarbershopModel.Service" />
+          <EntitySet Name="sysdiagrams" EntityType="Beloborodov_BarbershopModel.sysdiagrams" />
+          <EntitySet Name="Users" EntityType="Beloborodov_BarbershopModel.Users" />
+          <AssociationSet Name="FK_Record_Barber" Association="Beloborodov_BarbershopModel.FK_Record_Barber">
+            <End Role="Barber" EntitySet="Barber" />
+            <End Role="Record" EntitySet="Record" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ManPost_POl" Association="Beloborodov_BarbershopModel.FK_ManPost_POl">
+            <End Role="POl" EntitySet="POl" />
+            <End Role="ManPost" EntitySet="ManPost" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Record_ManPost" Association="Beloborodov_BarbershopModel.FK_Record_ManPost">
+            <End Role="ManPost" EntitySet="ManPost" />
+            <End Role="Record" EntitySet="Record" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Record_Service" Association="Beloborodov_BarbershopModel.FK_Record_Service">
+            <End Role="Service" EntitySet="Service" />
+            <End Role="Record" EntitySet="Record" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Record_Users" Association="Beloborodov_BarbershopModel.FK_Record_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Record" EntitySet="Record" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Barber">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="post" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="post" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="information" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="Record" Relationship="Self.FK_Record_Barber" FromRole="Barber" ToRole="Record" />
+          <NavigationProperty Name="Record" Relationship="Beloborodov_BarbershopModel.FK_Record_Barber" FromRole="Barber" ToRole="Record" />
+        </EntityType>
+        <EntityType Name="ManPost">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Genger" Type="Int32" Nullable="false" />
+          <Property Name="Pol" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="POl1" Relationship="Beloborodov_BarbershopModel.FK_ManPost_POl" FromRole="ManPost" ToRole="POl" />
+          <NavigationProperty Name="Record" Relationship="Beloborodov_BarbershopModel.FK_Record_ManPost" FromRole="ManPost" ToRole="Record" />
+        </EntityType>
+        <EntityType Name="Ochered">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="POl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ManPost" Relationship="Beloborodov_BarbershopModel.FK_ManPost_POl" FromRole="POl" ToRole="ManPost" />
         </EntityType>
         <EntityType Name="Record">
           <Key>
@@ -115,18 +250,30 @@
           <Property Name="Clientid" Type="Int32" Nullable="false" />
           <Property Name="DateandTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Comment" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Barber" Relationship="Self.FK_Record_Barber" FromRole="Record" ToRole="Barber" />
-          <NavigationProperty Name="Service" Relationship="Self.FK_Record_Service" FromRole="Record" ToRole="Service" />
+          <NavigationProperty Name="Barber" Relationship="Beloborodov_BarbershopModel.FK_Record_Barber" FromRole="Record" ToRole="Barber" />
+          <NavigationProperty Name="ManPost" Relationship="Beloborodov_BarbershopModel.FK_Record_ManPost" FromRole="Record" ToRole="ManPost" />
+          <NavigationProperty Name="Service" Relationship="Beloborodov_BarbershopModel.FK_Record_Service" FromRole="Record" ToRole="Service" />
+          <NavigationProperty Name="Users" Relationship="Beloborodov_BarbershopModel.FK_Record_Users" FromRole="Record" ToRole="Users" />
         </EntityType>
         <EntityType Name="Service">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="ServiceName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
-          <NavigationProperty Name="Record" Relationship="Self.FK_Record_Service" FromRole="Service" ToRole="Record" />
+          <Property Name="ServiceName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Photo" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Record" Relationship="Beloborodov_BarbershopModel.FK_Record_Service" FromRole="Service" ToRole="Record" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -136,10 +283,11 @@
           <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Record" Relationship="Beloborodov_BarbershopModel.FK_Record_Users" FromRole="Users" ToRole="Record" />
         </EntityType>
         <Association Name="FK_Record_Barber">
-          <End Role="Barber" Type="Self.Barber" Multiplicity="1" />
-          <End Role="Record" Type="Self.Record" Multiplicity="*" />
+          <End Type="Beloborodov_BarbershopModel.Barber" Role="Barber" Multiplicity="1" />
+          <End Type="Beloborodov_BarbershopModel.Record" Role="Record" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Barber">
               <PropertyRef Name="id" />
@@ -149,9 +297,33 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ManPost_POl">
+          <End Type="Beloborodov_BarbershopModel.POl" Role="POl" Multiplicity="1" />
+          <End Type="Beloborodov_BarbershopModel.ManPost" Role="ManPost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POl">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ManPost">
+              <PropertyRef Name="Pol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Record_ManPost">
+          <End Type="Beloborodov_BarbershopModel.ManPost" Role="ManPost" Multiplicity="1" />
+          <End Type="Beloborodov_BarbershopModel.Record" Role="Record" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ManPost">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Record">
+              <PropertyRef Name="Clientid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Record_Service">
-          <End Role="Service" Type="Self.Service" Multiplicity="1" />
-          <End Role="Record" Type="Self.Record" Multiplicity="*" />
+          <End Type="Beloborodov_BarbershopModel.Service" Role="Service" Multiplicity="1" />
+          <End Type="Beloborodov_BarbershopModel.Record" Role="Record" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Service">
               <PropertyRef Name="id" />
@@ -161,74 +333,43 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Beloborodov_BarbershopEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Barber" EntityType="Self.Barber" />
-          <EntitySet Name="Record" EntityType="Self.Record" />
-          <EntitySet Name="Service" EntityType="Self.Service" />
-          <EntitySet Name="Users" EntityType="Self.Users" />
-          <AssociationSet Name="FK_Record_Barber" Association="Self.FK_Record_Barber">
-            <End Role="Barber" EntitySet="Barber" />
-            <End Role="Record" EntitySet="Record" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Record_Service" Association="Self.FK_Record_Service">
-            <End Role="Service" EntitySet="Service" />
-            <End Role="Record" EntitySet="Record" />
-          </AssociationSet>
-          <EntitySet Name="Ochered" EntityType="Beloborodov_BarbershopModel.Ochered" />
-        </EntityContainer>
-        <EntityType Name="Ochered">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-      </Schema>
+        <Association Name="FK_Record_Users">
+          <End Type="Beloborodov_BarbershopModel.Users" Role="Users" Multiplicity="1" />
+          <End Type="Beloborodov_BarbershopModel.Record" Role="Record" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Record">
+              <PropertyRef Name="Barberid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище Beloborodov_BarbershopModelContainer" CdmEntityContainer="Beloborodov_BarbershopEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище Beloborodov_BarbershopModelContainer" CdmEntityContainer="Beloborodov_BarbershopEntities1">
           <EntitySetMapping Name="Barber">
             <EntityTypeMapping TypeName="Beloborodov_BarbershopModel.Barber">
               <MappingFragment StoreEntitySet="Barber">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="post" ColumnName="post" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
                 <ScalarProperty Name="information" ColumnName="information" />
-                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="post" ColumnName="post" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Record">
-            <EntityTypeMapping TypeName="Beloborodov_BarbershopModel.Record">
-              <MappingFragment StoreEntitySet="Record">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="Serviceid" ColumnName="Serviceid" />
-                <ScalarProperty Name="Barberid" ColumnName="Barberid" />
-                <ScalarProperty Name="Clientid" ColumnName="Clientid" />
-                <ScalarProperty Name="DateandTime" ColumnName="DateandTime" />
-                <ScalarProperty Name="Comment" ColumnName="Comment" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Service">
-            <EntityTypeMapping TypeName="Beloborodov_BarbershopModel.Service">
-              <MappingFragment StoreEntitySet="Service">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="ServiceName" ColumnName="ServiceName" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Photo" ColumnName="Photo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="Beloborodov_BarbershopModel.Users">
-              <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="Login" ColumnName="Login" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
+          <EntitySetMapping Name="ManPost">
+            <EntityTypeMapping TypeName="Beloborodov_BarbershopModel.ManPost">
+              <MappingFragment StoreEntitySet="ManPost">
+                <ScalarProperty Name="Pol" ColumnName="Pol" />
+                <ScalarProperty Name="Genger" ColumnName="Genger" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -237,6 +378,57 @@
               <MappingFragment StoreEntitySet="Ochered">
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POl">
+            <EntityTypeMapping TypeName="Beloborodov_BarbershopModel.POl">
+              <MappingFragment StoreEntitySet="POl">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Record">
+            <EntityTypeMapping TypeName="Beloborodov_BarbershopModel.Record">
+              <MappingFragment StoreEntitySet="Record">
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="DateandTime" ColumnName="DateandTime" />
+                <ScalarProperty Name="Clientid" ColumnName="Clientid" />
+                <ScalarProperty Name="Barberid" ColumnName="Barberid" />
+                <ScalarProperty Name="Serviceid" ColumnName="Serviceid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Service">
+            <EntityTypeMapping TypeName="Beloborodov_BarbershopModel.Service">
+              <MappingFragment StoreEntitySet="Service">
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ServiceName" ColumnName="ServiceName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Beloborodov_BarbershopModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="Beloborodov_BarbershopModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

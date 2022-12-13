@@ -10,24 +10,26 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BarberShopSalon.Pages
+namespace BarberShopSalon
 {
     /// <summary>
-    /// Логика взаимодействия для RecordPage.xaml
+    /// Логика взаимодействия для Window4.xaml
     /// </summary>
-    public partial class RecordPage : Page
+    public partial class Window4 : Window
     {
-        public RecordPage()
+        public Window4()
         {
             InitializeComponent();
-            List2.ItemsSource = AppData.BS.beloborodov.Barber.ToList();
         }
 
-        private void List2_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Back_Click(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show("Вы успешно зарегестрированы");
+            Window3 window3 = new Window3();
+            window3.Show();
+            Close();
 
         }
     }

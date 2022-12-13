@@ -13,10 +13,10 @@ namespace BarberShopSalon.Model
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Beloborodov_BarbershopEntities : DbContext
+    public partial class Beloborodov_BarbershopEntities1 : DbContext
     {
-        public Beloborodov_BarbershopEntities()
-            : base("name=Beloborodov_BarbershopEntities")
+        public Beloborodov_BarbershopEntities1()
+            : base("name=Beloborodov_BarbershopEntities1")
         {
         }
     
@@ -26,9 +26,12 @@ namespace BarberShopSalon.Model
         }
     
         public virtual DbSet<Barber> Barber { get; set; }
+        public virtual DbSet<ManPost> ManPost { get; set; }
+        public virtual DbSet<Ochered> Ochered { get; set; }
+        public virtual DbSet<POl> POl { get; set; }
         public virtual DbSet<Record> Record { get; set; }
         public virtual DbSet<Service> Service { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Users> Users { get; set; }
-        public virtual DbSet<Ochered> Ochered { get; set; }
     }
 }

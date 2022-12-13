@@ -7,13 +7,11 @@
       mc:Ignorable="d" 
       d:DesignHeight="350" d:DesignWidth="300"
       Title="SOTRUDNIKI" >
-    <Page.Background>
-        <ImageBrush ImageSource="1.jpg"/>
-    </Page.Background>
+  
 
 
     <Grid Background="#55c5ff">
-        <StackPanel Orientation="Vertical">
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
             <TextBlock Text="Сотрудники" FontSize="25" HorizontalAlignment="Center"
 Foreground="White" Margin="82,0,81,20"/>
             <TextBlock Text="Алексей -  Парикмахер" FontSize="17"
