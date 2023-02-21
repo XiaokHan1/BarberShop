@@ -46,7 +46,7 @@ namespace BarberShopSalon
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            
+           
         }
 
         private void Dobavlenie_Click(object sender, RoutedEventArgs e)
@@ -62,6 +62,11 @@ namespace BarberShopSalon
         }
 
         private void AndBtn2_Copy_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void userList_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
 
         }

@@ -32,5 +32,12 @@ namespace BarberShopSalon
             Close();
 
         }
+
+        private void Back1_Click(object sender, RoutedEventArgs e)
+        {
+            Window3 window3 = new Window3();
+            window3.Show();
+            Close();
+        }
     }
 }

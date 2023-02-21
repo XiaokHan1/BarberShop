@@ -32,11 +32,11 @@
         <Label Content="Поиск:" HorizontalAlignment="Left" Height="32" Margin="75 45 0 10" VerticalAlignment="Top" Background="#FFFFEFEF" Grid.Column="1" RenderTransformOrigin="1.202,0.469"/>
         <TextBox x:Name="nameFilter" Height="32" Margin="127,45,165,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Grid.Column="1"/>
         <Button Click="Button_Click" Style="{StaticResource AcceptButton}" Height="42" FontSize="10" Content="Применить" HorizontalAlignment="Right" Margin="0,40,10,0" VerticalAlignment="Top" Width="150" Grid.Column="1"/>
-        <ListView x:Name="userList" Margin="10,80,10,10" Background="#FF00C5FF" Grid.ColumnSpan="2" Foreground="White">
+        <ListView x:Name="userList" Margin="10,80,10,10" Background="#FF00C5FF" Grid.ColumnSpan="2" Foreground="White" SelectionChanged="userList_SelectionChanged_1">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Клиент" Width="150" DisplayMemberBinding="{Binding Name}"/>
-                    <GridViewColumn Header="Возраст" Width="120" DisplayMemberBinding="{Binding Data}"/>
+                    <GridViewColumn Header="Дата Рождения" Width="120" DisplayMemberBinding="{Binding Data}"/>
                     <GridViewColumn Header="Возраст" Width="100" DisplayMemberBinding="{Binding Genger}"/>
                     <GridViewColumn Header="Пол" Width="100" DisplayMemberBinding="{Binding Pol}"/>
                 </GridView>
